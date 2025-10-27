@@ -10,6 +10,10 @@ def addItem(item="default", qty=0, logs=None):
         logs = []
     if not item:
         return
+    # Type validation
+    if not isinstance(qty, (int, float)):
+        print(f"Error: Quantity must be a number, got {type(qty).__name__}")
+        return
     stock_data[item] = stock_data.get(item, 0) + qty
     logs.append(f"{datetime.now()}: Added {qty} of {item}")
 
